@@ -45,8 +45,7 @@ public class Webviewbg extends CordovaPlugin {
 								JSONObject obj = data.getJSONObject(0);
 								if (obj.getBoolean("value"))
 								{
-									//webView.setBackgroundColor(Color.TRANSPARENT);
-									webView.setBackgroundColor(Color.argb(1, 255, 255, 255));
+									webView.setBackgroundColor(Color.TRANSPARENT);
 									webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 								}
 								else 
