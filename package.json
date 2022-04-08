@@ -1,0 +1,46 @@
+{
+  "_from": "git+https://github.com/mightymop/cordova-plugin-webviewbg.git",
+  "_id": "cordova-plugin-webviewbg@1.0.0",
+  "_inBundle": false,
+  "_integrity": "",
+  "_location": "/cordova-plugin-webviewbg",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "git",
+    "raw": "https://github.com/mightymop/cordova-plugin-webviewbg.git",
+    "rawSpec": "https://github.com/mightymop/cordova-plugin-webviewbg.git",
+    "saveSpec": "git+https://github.com/mightymop/cordova-plugin-webviewbg.git",
+    "fetchSpec": "https://github.com/mightymop/cordova-plugin-webviewbg.git",
+    "gitCommittish": null
+  },
+  "_requiredBy": [
+    "#DEV:/",
+    "#USER"
+  ],
+  "_resolved": "git+https://github.com/mightymop/cordova-plugin-webviewbg.git",
+  "_spec": "https://github.com/mightymop/cordova-plugin-webviewbg.git",
+  "author": "",
+  "bundleDependencies": false,
+  "cordova": {
+    "id": "cordova-plugin-webviewbg",
+    "platforms": [
+      "android"
+    ]
+  },
+  "deprecated": false,
+  "description": "cordova plugin add https://github.com/mightymop/cordova-plugin-webviewbg.git\r ### 2. For Typescript add following code to main ts file: \r /// &lt;reference types=\"cordova-plugin-webviewbg\" /&gt;<br/>\r ### 3. Usage:\r ```\r window.webviewbg.setBG(val: string); window.webviewbg.setTransparent(val: boolean);",
+  "engines": [
+    {
+      "name": "cordova",
+      "version": ">=3.4.0"
+    }
+  ],
+  "keywords": [
+    "ecosystem:cordova",
+    "cordova-android"
+  ],
+  "license": "ISC",
+  "name": "cordova-plugin-webviewbg",
+  "types": "./types/index.d.ts",
+  "version": "1.0.0"
+}
