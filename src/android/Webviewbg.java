@@ -8,6 +8,9 @@ import android.webkit.WebView;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import android.graphics.Color;
 
 
 public class Webviewbg extends CordovaPlugin {
@@ -27,33 +30,45 @@ public class Webviewbg extends CordovaPlugin {
                     @Override
                     public void run() {
 
-                        if (action.equals("setBG")) {
-                            JSONObject obj = data.getJSONObject(0);
-							String value = obj.getString("value");
-							if (!value.startsWith("#"))
-							{
-								value+="#"+value;
+						try
+						{
+							if (action.equals("setBG")) {
+								JSONObject obj = data.getJSONObject(0);
+								String value = obj.getString("value");
+								if (!value.startsWith("#"))
+								{
+									value+="#"+value;
+								}
+								webView.setBackgroundColor(Color.parseColor(value));
 							}
-							webView.setBackgroundColor(Color.parseColor(value));
-                        }
-                        else if (action.equals("setTransparent")) {
-							JSONObject obj = data.getJSONObject(0);
-							if (obj.getBoolean("value"))
-							{
-								webView.setBackgroundColor(Color.TRANSPARENT);
+							else if (action.equals("setTransparent")) {
+								JSONObject obj = data.getJSONObject(0);
+								if (obj.getBoolean("value"))
+								{
+									webView.setBackgroundColor(Color.TRANSPARENT);
+								}
+								else 
+								{
+								   webView.setBackgroundColor(Color.WHITE);
+								}
 							}
-                            else 
-						    {
-							   webView.setBackgroundColor(Color.WHITE);
-						    }
-                        }
 
-                        new Handler(myLooper).post(new Runnable() {
-                            @Override
-                            public void run() {
-                                callbackContext.success();
-                            }
-                        });
+							new Handler(myLooper).post(new Runnable() {
+								@Override
+								public void run() {
+									callbackContext.success();
+								}
+							});
+						}
+						catch (Exception e)
+						{
+							new Handler(myLooper).post(new Runnable() {
+								@Override
+								public void run() {
+									 callbackContext.error(e.getMessage());
+								}
+							});
+						}
                     }
                 });
 

@@ -6,8 +6,8 @@ cordova plugin add https://github.com/mightymop/cordova-plugin-webviewbg.git
 /// &lt;reference types="cordova-plugin-webviewbg" /&gt;<br/>
 ### 3. Usage:
 ```
-window.zoomable.enable();
+window.webviewbg.setBG(val:string);
 
-window.zoomable.disable();
+window.webviewbg.setTransparent(val:boolean);
 
 ```
