@@ -1,5 +1,7 @@
 package de.mopsdom.webviewbg;
 
+import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
@@ -7,10 +9,9 @@ import android.webkit.WebView;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.PluginResult;
 import org.json.JSONArray;
-import org.json.JSONException;
 import org.json.JSONObject;
-import android.graphics.Color;
 
 
 public class Webviewbg extends CordovaPlugin {
@@ -20,6 +21,32 @@ public class Webviewbg extends CordovaPlugin {
     @Override
     public boolean execute(final String action, final JSONArray data, final CallbackContext callbackContext) {
 
+		if (action.equals("isDarkMode")){
+			int nightModeFlags =
+				this.cordova.getActivity().getResources().getConfiguration().uiMode &
+				Configuration.UI_MODE_NIGHT_MASK;
+			PluginResult presult;
+			switch (nightModeFlags) {
+				case Configuration.UI_MODE_NIGHT_YES:
+					presult = new PluginResult(PluginResult.Status.OK, "true");
+                    callbackContext.sendPluginResult(presult);
+					break;
+
+				case Configuration.UI_MODE_NIGHT_NO:
+					presult = new PluginResult(PluginResult.Status.OK, "false");
+                    callbackContext.sendPluginResult(presult);
+					break;
+
+				case Configuration.UI_MODE_NIGHT_UNDEFINED:
+					presult = new PluginResult(PluginResult.Status.OK, "undefined");
+                    callbackContext.sendPluginResult(presult);
+					break;
+			}
+			
+			
+			return true;
+		}
+		else
         if (action.equals("setBG")||action.equals("setTransparent")) {
             final WebView webView = (WebView) this.webView.getEngine().getView();
             try
@@ -48,7 +75,7 @@ public class Webviewbg extends CordovaPlugin {
 									webView.setBackgroundColor(Color.TRANSPARENT);
 									webView.setLayerType(View.LAYER_TYPE_SOFTWARE, null);
 								}
-								else 
+								else
 								{
 									webView.setBackgroundColor(Color.WHITE);
 								}

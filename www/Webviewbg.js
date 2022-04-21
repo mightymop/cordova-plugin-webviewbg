@@ -8,6 +8,9 @@ var webviewbg = {
 	},
 	setTransparent : function (val, success, error ) {
 		exec(success, error, 'Webviewbg', 'setTransparent', [{value:val}]);
+	},
+	isDarkMode : function (success, error ) {
+		exec(success, error, 'Webviewbg', 'isDarkMode', []);
 	}
 };
 
